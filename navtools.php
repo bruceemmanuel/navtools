@@ -8,8 +8,7 @@ class Navegacao
 	public function __construct()
 	{
 		session_start();
-		$this->autenticar();
-
+	
 		$this->uri   = $_SERVER['REQUEST_URI']; 
 		$this->host  = $_SERVER['SERVER_NAME'];
 		$this->admin = $_SERVER['SERVER_ADMIN'];
@@ -19,12 +18,14 @@ class Navegacao
 		$this->apagar();
 	}
 
-	private function autenticar(){
+
+	public function autenticacao()
+	{
 		if(isset($_GET['sair']))
 		{
 			session_destroy();
-			$this->redirect($this->script);
-
+			return $this->redirect($this->script);
+			die();
 		}
 
 		if(isset($_POST['senha']))
@@ -39,11 +40,6 @@ class Navegacao
 				}
 			}
 		}
-
-	}
-
-	public function autenticacao()
-	{
 		if(!isset($_SESSION['logado']))
 		{
 			$this->html_topo();
