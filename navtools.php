@@ -134,6 +134,15 @@ class Navegacao
 				 </nav>
 			';
 				
+			}
+
+
+			if(count($this->mensagem) > 0)
+			{
+				foreach($this->mensagem as $key => $valor){
+				printf("<p class='%s'>%s</p>",$key,$valor);
+
+				}
 			}	
 	}
 
@@ -150,7 +159,7 @@ class Navegacao
 			if(is_dir($_GET['dir']))
 			{
 				rmdir($_GET['dir']);
-				echo "Diretório Apagado com sucesso!";
+				$this->mensagem['sucesso'] = "Diretório Apagado com sucesso!";
 			}
 		}
 
@@ -159,7 +168,7 @@ class Navegacao
 			if(is_file($_GET['file']))
 			{
 				unlink($_GET['file']);
-				echo "Arquivo apagado com sucesso!";
+				$this->mensagem['sucesso'] = "Arquivo apagado com sucesso!";
 			}
 		}
 
