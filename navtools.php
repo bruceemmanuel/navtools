@@ -123,14 +123,18 @@ class Navegacao
 				</style>
 			</head>
 			<body>
-			<div id="wrapper">
-			<nav>
-				<ul>
+			<div id="wrapper">';
+			if(isset($_SESSION['logado']))
+			{
+			echo '<nav>
+				    <ul>
 					<li><a href="'.$this->script.'">Home</a></li>
 					<li><a href="'.$this->script.'?sair=true">Sair</a></li>
-				</ul>
-			</nav>
+					</ul>
+				 </nav>
 			';
+				
+			}	
 	}
 
 	private function html_footer()
